@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
+Visite https://eclipse-ee4j.github.io/jaxb-ri 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2024.10.22 a las 10:25:52 PM PET 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://www.tailoy.com.pe/ws/objects">
+    <schemaBindings map="false">
+      <package name="pe.com.tailoy.ws.objects"/>
+    </schemaBindings>
+    <bindings scd="tns:getProductosRequest">
+      <class ref="pe.com.tailoy.ws.objects.GetProductosRequest"/>
+    </bindings>
+    <bindings scd="tns:getProductosResponse">
+      <class ref="pe.com.tailoy.ws.objects.GetProductosResponse"/>
+    </bindings>
+    <bindings scd="~tns:productows">
+      <class ref="pe.com.tailoy.ws.objects.Productows"/>
+    </bindings>
+    <bindings scd="tns:GetProductoRequest">
+      <class ref="pe.com.tailoy.ws.objects.GetProductoRequest"/>
+    </bindings>
+    <bindings scd="tns:GetProductoResponse">
+      <class ref="pe.com.tailoy.ws.objects.GetProductoResponse"/>
+    </bindings>
+    <bindings scd="tns:postProductRequest">
+      <class ref="pe.com.tailoy.ws.objects.PostProductRequest"/>
+    </bindings>
+    <bindings scd="tns:postProductResponse">
+      <class ref="pe.com.tailoy.ws.objects.PostProductResponse"/>
+    </bindings>
+    <bindings scd="tns:putProductRequest">
+      <class ref="pe.com.tailoy.ws.objects.PutProductRequest"/>
+    </bindings>
+    <bindings scd="tns:putProductResponse">
+      <class ref="pe.com.tailoy.ws.objects.PutProductResponse"/>
+    </bindings>
+  </bindings>
+</bindings>
+

@@ -1,0 +1,83 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.tailoy.com.pe/ws/objects"
+           targetNamespace="http://www.tailoy.com.pe/ws/objects"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="productows">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="precio" type="xs:decimal"/>
+            <xs:element name="stock" type="xs:int"/>
+            <xs:element name="categoria_id" type="xs:int"/>
+            <xs:element name="proveedor_id" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- LISTAR TODOS LOS PRODUCTOS-->
+
+    <xs:element name="getProductosRequest">
+        <xs:complexType>
+            <xs:sequence />
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getProductosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="productos"
+                            type="tns:productows" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- BUSCAR POREDUCTO X ID-->
+    <xs:element name="GetProductoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetProductoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="producto"  type="tns:productows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- CREATE -->
+    <xs:element name="postProductRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="producto" type="tns:productows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="postProductResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="producto" type="tns:productows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ACTUALIZAR -->
+    <xs:element name="putProductRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="producto" type="tns:productows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="putProductResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="producto" type="tns:productows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

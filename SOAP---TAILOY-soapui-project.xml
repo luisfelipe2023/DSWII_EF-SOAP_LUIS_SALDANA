@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="abe0740c-299b-4391-9c91-ccc5cfd6ffd6" activeEnvironment="Default" name="SOAP - TAILOY" resourceRoot="" soapui-version="5.7.2" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="79a94727-aea3-4957-9705-0997a768d650" wsaVersion="NONE" name="ProductosPortSoap11" type="wsdl" bindingName="{http://tailoy.com.pe/ws/objects}ProductosPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:9090/ws/productos.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:9090/ws/productos.wsdl"><con:part><con:url>http://localhost:9090/ws/productos.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://tailoy.com.pe/ws/objects" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.tailoy.com.pe/ws/objects" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tailoy.com.pe/ws/objects">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.tailoy.com.pe/ws/objects" xmlns:tns="http://www.tailoy.com.pe/ws/objects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="productows">
+        <xs:sequence>
+          <xs:element name="id" type="xs:long"/>
+          <xs:element name="nombre" type="xs:string"/>
+          <xs:element name="precio" type="xs:decimal"/>
+          <xs:element name="stock" type="xs:int"/>
+          <xs:element name="categoria_id" type="xs:int"/>
+          <xs:element name="proveedor_id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--LISTAR TODOS LOS PRODUCTOS-->
+      <xs:element name="getProductosRequest">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProductosResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="productos" type="tns:productows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--BUSCAR POREDUCTO X ID-->
+      <xs:element name="GetProductoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="producto" type="tns:productows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--CREATE-->
+      <xs:element name="postProductRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="producto" type="tns:productows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="postProductResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="producto" type="tns:productows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--ACTUALIZAR-->
+      <xs:element name="putProductRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="producto" type="tns:productows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="putProductResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="producto" type="tns:productows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getProductosResponse">
+    <wsdl:part element="sch:getProductosResponse" name="getProductosResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetProductoResponse">
+    <wsdl:part element="sch:GetProductoResponse" name="GetProductoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putProductResponse">
+    <wsdl:part element="sch:putProductResponse" name="putProductResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postProductRequest">
+    <wsdl:part element="sch:postProductRequest" name="postProductRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProductosRequest">
+    <wsdl:part element="sch:getProductosRequest" name="getProductosRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postProductResponse">
+    <wsdl:part element="sch:postProductResponse" name="postProductResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putProductRequest">
+    <wsdl:part element="sch:putProductRequest" name="putProductRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetProductoRequest">
+    <wsdl:part element="sch:GetProductoRequest" name="GetProductoRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ProductosPort">
+    <wsdl:operation name="getProductos">
+      <wsdl:input message="tns:getProductosRequest" name="getProductosRequest"></wsdl:input>
+      <wsdl:output message="tns:getProductosResponse" name="getProductosResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProducto">
+      <wsdl:input message="tns:GetProductoRequest" name="GetProductoRequest"></wsdl:input>
+      <wsdl:output message="tns:GetProductoResponse" name="GetProductoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putProduct">
+      <wsdl:input message="tns:putProductRequest" name="putProductRequest"></wsdl:input>
+      <wsdl:output message="tns:putProductResponse" name="putProductResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postProduct">
+      <wsdl:input message="tns:postProductRequest" name="postProductRequest"></wsdl:input>
+      <wsdl:output message="tns:postProductResponse" name="postProductResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProductosPortSoap11" type="tns:ProductosPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getProductos">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getProductosRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getProductosResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProducto">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetProductoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetProductoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putProduct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="putProductRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="putProductResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postProduct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postProductRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="postProductResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductosPortService">
+    <wsdl:port binding="tns:ProductosPortSoap11" name="ProductosPortSoap11">
+      <soap:address location="http://localhost:9090/ws/productos"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:9090/ws/productos</con:endpoint></con:endpoints><con:operation id="2c594429-7b9f-419e-95d4-3e28579173da" isOneWay="false" action="" name="GetProducto" bindingOperationName="GetProducto" type="Request-Response" outputName="GetProductoResponse" inputName="GetProductoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3aaa930c-87ff-4494-ba70-267fa21e4171" name="Buscar Productos Por ID"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/ws/productos</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.tailoy.com.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:GetProductoRequest>\r
+         <obj:id>5</obj:id>\r
+      </obj:GetProductoRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tailoy.com.pe/ws/objects/ProductosPort/GetProductoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="3a96350e-c679-43b0-94fb-b8bcceaef24f" isOneWay="false" action="" name="getProductos" bindingOperationName="getProductos" type="Request-Response" outputName="getProductosResponse" inputName="getProductosRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bd847c42-c31e-4aa4-bb88-f989862ee37b" name="Buscar productos"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/ws/productos</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.tailoy.com.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:getProductosRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tailoy.com.pe/ws/objects/ProductosPort/getProductosRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="37a4e485-5c3b-4e6e-a801-d64968cef58d" isOneWay="false" action="" name="postProduct" bindingOperationName="postProduct" type="Request-Response" outputName="postProductResponse" inputName="postProductRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6cfefd07-59c9-4d69-8665-525576a873b3" name="Crear Producto"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/ws/productos</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.tailoy.com.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:postProductRequest>\r
+         <obj:producto>\r
+            <obj:id>9</obj:id>\r
+            <obj:nombre>Impresora HP</obj:nombre>\r
+            <obj:precio>259.90</obj:precio>\r
+            <obj:stock>50</obj:stock>\r
+            <obj:categoria_id>2</obj:categoria_id>\r
+            <obj:proveedor_id>2</obj:proveedor_id>\r
+         </obj:producto>\r
+      </obj:postProductRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tailoy.com.pe/ws/objects/ProductosPort/postProductRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ea4d1e59-4d22-472c-a1b0-6d0012c8bf5d" isOneWay="false" action="" name="putProduct" bindingOperationName="putProduct" type="Request-Response" outputName="putProductResponse" inputName="putProductRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b3f3ae24-df6f-4369-bbc1-fe281c2ecf8c" name="Actualizar Producto"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/ws/productos</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.tailoy.com.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:putProductRequest>\r
+         <obj:producto>\r
+            <obj:id>9</obj:id>\r
+            <obj:nombre>AA</obj:nombre>\r
+            <obj:precio>99.80</obj:precio>\r
+            <obj:stock>50</obj:stock>\r
+            <obj:categoria_id>2</obj:categoria_id>\r
+            <obj:proveedor_id>2</obj:proveedor_id>\r
+         </obj:producto>\r
+      </obj:putProductRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tailoy.com.pe/ws/objects/ProductosPort/putProductRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="0f158456-9187-4480-aae1-e14b615eed10" wsaVersion="NONE" name="CategoriaPortSoap11" type="wsdl" bindingName="{http://tailoy.com.pe/ws/objects}CategoriaPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:9090/ws/categoria.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:9090/ws/categoria.wsdl"><con:part><con:url>http://localhost:9090/ws/categoria.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://tailoy.com.pe/ws/objects" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.tailoy.com.pe/ws/objects" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tailoy.com.pe/ws/objects">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.tailoy.com.pe/ws/objects" xmlns:tns="http://www.tailoy.com.pe/ws/objects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="categoriaows">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="nombre" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--LISTAR TODAS LAS CATEGORÍAS-->
+      <xs:element name="getCategoriasRequest">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCategoriasResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="categorias" type="tns:categoriaows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--BUSCAR CATEGORÍA POR ID-->
+      <xs:element name="GetCategoriaRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCategoriaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="categoria" type="tns:categoriaows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--CREATE-->
+      <xs:element name="postCategoriaRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="categoria" type="tns:categoriaows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="postCategoriaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="categoria" type="tns:categoriaows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--ACTUALIZAR-->
+      <xs:element name="putCategoriaRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="categoria" type="tns:categoriaows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="putCategoriaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="categoria" type="tns:categoriaows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getCategoriasRequest">
+    <wsdl:part element="sch:getCategoriasRequest" name="getCategoriasRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCategoriasResponse">
+    <wsdl:part element="sch:getCategoriasResponse" name="getCategoriasResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postCategoriaResponse">
+    <wsdl:part element="sch:postCategoriaResponse" name="postCategoriaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putCategoriaResponse">
+    <wsdl:part element="sch:putCategoriaResponse" name="putCategoriaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putCategoriaRequest">
+    <wsdl:part element="sch:putCategoriaRequest" name="putCategoriaRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetCategoriaRequest">
+    <wsdl:part element="sch:GetCategoriaRequest" name="GetCategoriaRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetCategoriaResponse">
+    <wsdl:part element="sch:GetCategoriaResponse" name="GetCategoriaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postCategoriaRequest">
+    <wsdl:part element="sch:postCategoriaRequest" name="postCategoriaRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CategoriaPort">
+    <wsdl:operation name="getCategorias">
+      <wsdl:input message="tns:getCategoriasRequest" name="getCategoriasRequest"></wsdl:input>
+      <wsdl:output message="tns:getCategoriasResponse" name="getCategoriasResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postCategoria">
+      <wsdl:input message="tns:postCategoriaRequest" name="postCategoriaRequest"></wsdl:input>
+      <wsdl:output message="tns:postCategoriaResponse" name="postCategoriaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putCategoria">
+      <wsdl:input message="tns:putCategoriaRequest" name="putCategoriaRequest"></wsdl:input>
+      <wsdl:output message="tns:putCategoriaResponse" name="putCategoriaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoria">
+      <wsdl:input message="tns:GetCategoriaRequest" name="GetCategoriaRequest"></wsdl:input>
+      <wsdl:output message="tns:GetCategoriaResponse" name="GetCategoriaResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CategoriaPortSoap11" type="tns:CategoriaPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCategorias">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCategoriasRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCategoriasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postCategoria">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postCategoriaRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="postCategoriaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putCategoria">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="putCategoriaRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="putCategoriaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoria">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetCategoriaRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetCategoriaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CategoriaPortService">
+    <wsdl:port binding="tns:CategoriaPortSoap11" name="CategoriaPortSoap11">
+      <soap:address location="http://localhost:9090/ws/categoria"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:9090/ws/categoria</con:endpoint></con:endpoints><con:operation id="9f79eae1-89ea-4eb5-8d89-8ad902dad1b0" isOneWay="false" action="" name="GetCategoria" bindingOperationName="GetCategoria" type="Request-Response" outputName="GetCategoriaResponse" inputName="GetCategoriaRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="444ad7d9-25c0-4672-b463-60d5e7e65d33" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/ws/categoria</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.tailoy.com.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:GetCategoriaRequest>\r
+         <obj:id>1</obj:id>\r
+      </obj:GetCategoriaRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tailoy.com.pe/ws/objects/CategoriaPort/GetCategoriaRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="38baea69-22c8-461d-a5ae-b2ee92d82bbf" isOneWay="false" action="" name="getCategorias" bindingOperationName="getCategorias" type="Request-Response" outputName="getCategoriasResponse" inputName="getCategoriasRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6d6f799e-9001-45cb-b9b7-f2fe198883b4" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/ws/categoria</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.tailoy.com.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:getCategoriasRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tailoy.com.pe/ws/objects/CategoriaPort/getCategoriasRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="f8235fd4-4ba9-4eaf-b33d-7295f34540c7" isOneWay="false" action="" name="postCategoria" bindingOperationName="postCategoria" type="Request-Response" outputName="postCategoriaResponse" inputName="postCategoriaRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4d909838-7635-4af2-b18f-bed7a8177c82" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/ws/categoria</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.tailoy.com.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:postCategoriaRequest>\r
+         <obj:categoria>\r
+            <obj:id>5</obj:id>\r
+            <obj:nombre>Libreria</obj:nombre>\r
+         </obj:categoria>\r
+      </obj:postCategoriaRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tailoy.com.pe/ws/objects/CategoriaPort/postCategoriaRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="b057b4ee-3217-4e4d-9e70-299cf9afcce7" isOneWay="false" action="" name="putCategoria" bindingOperationName="putCategoria" type="Request-Response" outputName="putCategoriaResponse" inputName="putCategoriaRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="79aa9995-db92-48bd-bef7-63826d5d643a" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/ws/categoria</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.tailoy.com.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:putCategoriaRequest>\r
+         <obj:categoria>\r
+            <obj:id>5</obj:id>\r
+            <obj:nombre>Bazar</obj:nombre>\r
+         </obj:categoria>\r
+      </obj:putCategoriaRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tailoy.com.pe/ws/objects/CategoriaPort/putCategoriaRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="af4d44fa-bb46-4e16-86f1-522fb6cc233e" wsaVersion="NONE" name="ProveedorPortSoap11" type="wsdl" bindingName="{http://tailoy.com.pe/ws/objects}ProveedorPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:9090/ws/proveedor.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:9090/ws/proveedor.wsdl"><con:part><con:url>http://localhost:9090/ws/proveedor.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://tailoy.com.pe/ws/objects" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.tailoy.com.pe/ws/objects" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tailoy.com.pe/ws/objects">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.tailoy.com.pe/ws/objects" xmlns:tns="http://www.tailoy.com.pe/ws/objects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="proveedorows">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="nombre" type="xs:string"/>
+          <xs:element name="contacto" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--LISTAR TODOS LOS PROVEEDORES-->
+      <xs:element name="getProveedoresRequest">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProveedoresResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="proveedores" type="tns:proveedorows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--BUSCAR PROVEEDOR POR ID-->
+      <xs:element name="GetProveedorRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProveedorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="proveedor" type="tns:proveedorows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--CREATE-->
+      <xs:element name="postProveedorRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="proveedor" type="tns:proveedorows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="postProveedorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="proveedor" type="tns:proveedorows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--ACTUALIZAR-->
+      <xs:element name="putProveedorRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="proveedor" type="tns:proveedorows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="putProveedorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="proveedor" type="tns:proveedorows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getProveedoresRequest">
+    <wsdl:part element="sch:getProveedoresRequest" name="getProveedoresRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putProveedorRequest">
+    <wsdl:part element="sch:putProveedorRequest" name="putProveedorRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postProveedorRequest">
+    <wsdl:part element="sch:postProveedorRequest" name="postProveedorRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetProveedorResponse">
+    <wsdl:part element="sch:GetProveedorResponse" name="GetProveedorResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProveedoresResponse">
+    <wsdl:part element="sch:getProveedoresResponse" name="getProveedoresResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetProveedorRequest">
+    <wsdl:part element="sch:GetProveedorRequest" name="GetProveedorRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postProveedorResponse">
+    <wsdl:part element="sch:postProveedorResponse" name="postProveedorResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putProveedorResponse">
+    <wsdl:part element="sch:putProveedorResponse" name="putProveedorResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ProveedorPort">
+    <wsdl:operation name="getProveedores">
+      <wsdl:input message="tns:getProveedoresRequest" name="getProveedoresRequest"></wsdl:input>
+      <wsdl:output message="tns:getProveedoresResponse" name="getProveedoresResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putProveedor">
+      <wsdl:input message="tns:putProveedorRequest" name="putProveedorRequest"></wsdl:input>
+      <wsdl:output message="tns:putProveedorResponse" name="putProveedorResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postProveedor">
+      <wsdl:input message="tns:postProveedorRequest" name="postProveedorRequest"></wsdl:input>
+      <wsdl:output message="tns:postProveedorResponse" name="postProveedorResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProveedor">
+      <wsdl:input message="tns:GetProveedorRequest" name="GetProveedorRequest"></wsdl:input>
+      <wsdl:output message="tns:GetProveedorResponse" name="GetProveedorResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProveedorPortSoap11" type="tns:ProveedorPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getProveedores">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getProveedoresRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getProveedoresResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putProveedor">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="putProveedorRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="putProveedorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postProveedor">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postProveedorRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="postProveedorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProveedor">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetProveedorRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetProveedorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProveedorPortService">
+    <wsdl:port binding="tns:ProveedorPortSoap11" name="ProveedorPortSoap11">
+      <soap:address location="http://localhost:9090/ws/proveedor"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:9090/ws/proveedor</con:endpoint></con:endpoints><con:operation id="630c0c95-a04d-462e-81e5-e3f4c4c1b24f" isOneWay="false" action="" name="GetProveedor" bindingOperationName="GetProveedor" type="Request-Response" outputName="GetProveedorResponse" inputName="GetProveedorRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="027e6603-cb05-471e-aaeb-c9bae4bf9976" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/ws/proveedor</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.tailoy.com.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:GetProveedorRequest>\r
+         <obj:id>5</obj:id>\r
+      </obj:GetProveedorRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tailoy.com.pe/ws/objects/ProveedorPort/GetProveedorRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="5c8e41a4-cbb8-4191-9ac7-b64cb538e436" isOneWay="false" action="" name="getProveedores" bindingOperationName="getProveedores" type="Request-Response" outputName="getProveedoresResponse" inputName="getProveedoresRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1c40f1e8-8c72-457e-917e-a0abc4fcacfd" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/ws/proveedor</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.tailoy.com.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:getProveedoresRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tailoy.com.pe/ws/objects/ProveedorPort/getProveedoresRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="2c9055b2-7d9c-433e-9f28-2a10bd92b761" isOneWay="false" action="" name="postProveedor" bindingOperationName="postProveedor" type="Request-Response" outputName="postProveedorResponse" inputName="postProveedorRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="24f39698-fcd5-4c75-b31e-42950ae01509" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/ws/proveedor</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.tailoy.com.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:postProveedorRequest>\r
+         <obj:proveedor>\r
+            <obj:id>?</obj:id>\r
+            <obj:nombre>HP</obj:nombre>\r
+            <obj:contacto>hp@gmail.com</obj:contacto>\r
+         </obj:proveedor>\r
+      </obj:postProveedorRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tailoy.com.pe/ws/objects/ProveedorPort/postProveedorRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="369e16c4-1f2b-41dc-9f8c-e1223e7035a4" isOneWay="false" action="" name="putProveedor" bindingOperationName="putProveedor" type="Request-Response" outputName="putProveedorResponse" inputName="putProveedorRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ca495d53-ddda-4bb9-8d4a-9c37bf4b3bf6" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/ws/proveedor</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.tailoy.com.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:putProveedorRequest>\r
+         <obj:proveedor>\r
+            <obj:id>9</obj:id>\r
+            <obj:nombre>HP</obj:nombre>\r
+            <obj:contacto>hp_copmany@gmail.com</obj:contacto>\r
+         </obj:proveedor>\r
+      </obj:putProveedorRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tailoy.com.pe/ws/objects/ProveedorPort/putProveedorRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

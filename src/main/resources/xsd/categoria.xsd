@@ -1,0 +1,80 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.tailoy.com.pe/ws/objects"
+           targetNamespace="http://www.tailoy.com.pe/ws/objects"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="categoriaows">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="nombre" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- LISTAR TODAS LAS CATEGORÍAS -->
+    <xs:element name="getCategoriasRequest">
+        <xs:complexType>
+            <xs:sequence />
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCategoriasResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="categorias"
+                            type="tns:categoriaows" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- BUSCAR CATEGORÍA POR ID -->
+    <xs:element name="GetCategoriaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetCategoriaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="categoria" maxOccurs="unbounded" type="tns:categoriaows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- CREATE -->
+    <xs:element name="postCategoriaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="categoria" type="tns:categoriaows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="postCategoriaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="categoria" type="tns:categoriaows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ACTUALIZAR -->
+    <xs:element name="putCategoriaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="categoria" type="tns:categoriaows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="putCategoriaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="categoria" type="tns:categoriaows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

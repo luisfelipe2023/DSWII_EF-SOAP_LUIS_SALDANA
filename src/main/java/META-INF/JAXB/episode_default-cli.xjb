@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
+Visite https://eclipse-ee4j.github.io/jaxb-ri 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2024.10.22 a las 10:23:54 PM PET 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://www.tailoy.com.pe/ws/objects">
+    <schemaBindings map="false">
+      <package name="pe.com.tailoy.ws.objects"/>
+    </schemaBindings>
+    <bindings scd="tns:getProveedoresRequest">
+      <class ref="pe.com.tailoy.ws.objects.GetProveedoresRequest"/>
+    </bindings>
+    <bindings scd="tns:getProveedoresResponse">
+      <class ref="pe.com.tailoy.ws.objects.GetProveedoresResponse"/>
+    </bindings>
+    <bindings scd="~tns:proveedorows">
+      <class ref="pe.com.tailoy.ws.objects.Proveedorows"/>
+    </bindings>
+    <bindings scd="tns:GetProveedorRequest">
+      <class ref="pe.com.tailoy.ws.objects.GetProveedorRequest"/>
+    </bindings>
+    <bindings scd="tns:GetProveedorResponse">
+      <class ref="pe.com.tailoy.ws.objects.GetProveedorResponse"/>
+    </bindings>
+    <bindings scd="tns:postProveedorRequest">
+      <class ref="pe.com.tailoy.ws.objects.PostProveedorRequest"/>
+    </bindings>
+    <bindings scd="tns:postProveedorResponse">
+      <class ref="pe.com.tailoy.ws.objects.PostProveedorResponse"/>
+    </bindings>
+    <bindings scd="tns:putProveedorRequest">
+      <class ref="pe.com.tailoy.ws.objects.PutProveedorRequest"/>
+    </bindings>
+    <bindings scd="tns:putProveedorResponse">
+      <class ref="pe.com.tailoy.ws.objects.PutProveedorResponse"/>
+    </bindings>
+  </bindings>
+</bindings>
+
